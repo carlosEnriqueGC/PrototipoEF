@@ -65,7 +65,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel3.setText("Contraseña");
 
-        txtUsuario.setText("admin");
         txtUsuario.setName("txtUsuario"); // NOI18N
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,8 +85,6 @@ public class frmLogin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        txtContraseña.setText("admin");
 
         cbxAreas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione:", "Area Seguridad", "Area Logistica", " " }));
         cbxAreas.addActionListener(new java.awt.event.ActionListener() {

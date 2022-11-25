@@ -21,6 +21,7 @@ public class clsConcepto {
     int conid;
     String connombre;
     String conestatus;
+    int convalor;
 
     public clsConcepto() {
     }
@@ -29,9 +30,10 @@ public class clsConcepto {
         this.conid= codigo;
     }
 
-    public clsConcepto(String nombre, String estado) {
+    public clsConcepto(String nombre, String estado, int valor) {
         this.connombre = nombre;
         this.conestatus = estado;
+        this.convalor = valor;
     }
 
     public int getcodigoc() {
@@ -57,10 +59,18 @@ public class clsConcepto {
     public void setestadoc(String estado) {
         this.conestatus = estado;
     }
+    
+     public int getvalorc() {
+        return convalor;
+    }
+
+    public void setvalorc(int valor) {
+        this.convalor = valor;
+    }
 
     @Override
     public String toString() {
-        return "tbl_conceptos{" + "conid=" + conid + ", connombre=" + connombre + ", conestatus=" + conestatus + '}';
+        return "tbl_conceptos{" + "conid=" + conid + ", connombre=" + connombre + ", conestatus=" + conestatus + ", convalor=" + convalor+'}';
     }
     
 }

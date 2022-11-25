@@ -9,17 +9,15 @@ package seguridad.vista;
 
 import seguridad.controlador.clsUsuario;
 import java.awt.HeadlessException;
-import ventas.vista.mdiVentas;
+
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import prototipos.vista.mdiPrototipo;
+
 import logistica.vista.mdiLogistica;
-import compras.vista.mdiCompras;
-import ventas.vista.mdiVentas;
+
+
 import seguridad.controlador.clsSeguridad;
 import seguridad.controlador.clsUsuarioConectado;
-import seguridad.modelo.daoAcceso;
-import seguridad.modelo.daoBitacora;
 import seguridad.modelo.daoUsuario;
 
 
@@ -158,8 +156,7 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-
-        if (txtUsuario.getText().trim().isEmpty() || txtContraseña.getText().trim().isEmpty()) {
+    if (txtUsuario.getText().trim().isEmpty() || txtContraseña.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
@@ -168,45 +165,30 @@ public class frmLogin extends javax.swing.JFrame {
                 usuarioAConsultar.setUsunombre((txtUsuario.getText().trim()));
                 // Recuperación de información a través de otro objeto
                 usuarioAConsultar = usuarioDAO.queryn(usuarioAConsultar);
-                clsSeguridad c = new clsSeguridad();
-                Boolean estadoUsuarioRegistrado=false;
-                estadoUsuarioRegistrado = usuarioDAO.obtenerEstadoUsuario(txtUsuario.getText(), c.encode(txtContraseña.getText()));
-                // JOptionPane.showMessageDialog(null, "Estado Usuario: " + estadoUsuarioRegistrado);
-                if (estadoUsuarioRegistrado) {
-                //if (c.encode(txtContraseña.getText()).equals(usuarioAConsultar.getUsucontrasena()) && txtUsuario.getText().equals(usuarioAConsultar.getUsunombre())) {
-                
+clsSeguridad c = new clsSeguridad();
+                if (c.encode(txtContraseña.getText()).equals(usuarioAConsultar.getUsucontrasena()) && txtUsuario.getText().equals(usuarioAConsultar.getUsunombre())) {
                     JOptionPane.showMessageDialog(null, "Bienvenido al SISTEMA\n", "Mensaje de bienvenida", JOptionPane.INFORMATION_MESSAGE);
                     
                     //mdiGeneral menuGeneral = new mdiGeneral();
                     //menuGeneral.setVisible(true);
                     //this.dispose();
-                    clsUsuarioConectado usuarioRegistrado = new clsUsuarioConectado();
-                    usuarioRegistrado.setUsuid(usuarioAConsultar.getUsuid());
-                    usuarioRegistrado.setUsunombre(txtUsuario.getText().trim());
+                    clsUsuario usuarioRegistrado = new clsUsuario();                                   usuarioRegistrado.setUsunombre(txtUsuario.getText().trim());
                     
                     //---Agregado para considerar todos los módulos
                     String areaSeleccionada;
                     areaSeleccionada = cbxAreas.getSelectedItem().toString();
-
+      
                     switch (areaSeleccionada) {
 
                         case "Area Seguridad":
                         try {
-                            daoAcceso acceso = new daoAcceso(usuarioAConsultar.getUsutipo());
+                            mdiGeneral menuGeneral = new mdiGeneral();
+                            menuGeneral.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {
                             System.out.println(e);
                         }
-                        break;
-                        case "Prototipo":
-                        try {
-                            mdiPrototipo menuPrototipo = new mdiPrototipo();
-                            menuPrototipo.setVisible(true);
-                            this.dispose();
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }
-                        break;     
+                        break;                        
                         case "Area Logistica":
                         try {
                             mdiLogistica menuLogistica = new mdiLogistica();
@@ -215,25 +197,7 @@ public class frmLogin extends javax.swing.JFrame {
                         } catch (Exception e) {
                             System.out.println(e);
                         }
-                        break;                                            
-                        case "Area Compras":
-                        try {
-                            mdiCompras menuCompras = new mdiCompras();
-                            menuCompras.setVisible(true);
-                            this.dispose();
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }
-                        break;                    
-                        case "Area Ventas":
-                        try {
-                            mdiVentas menuVentas = new mdiVentas();
-                            menuVentas.setVisible(true);
-                            this.dispose();
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }
-                        break;                                            
+                        break;                                          
                         default:
                             break;
                     }
@@ -250,8 +214,7 @@ public class frmLogin extends javax.swing.JFrame {
                 txtUsuario.setText("");
             }
         }
-          daoBitacora bitacora = new daoBitacora();
-        bitacora.insert(clsUsuarioConectado.getUsuid(), codigoAplicacion, "Login");
+ 
       
 
     }//GEN-LAST:event_btnAceptarActionPerformed

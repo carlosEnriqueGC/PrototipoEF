@@ -3,7 +3,7 @@ package logistica.controlador;
 import seguridad.controlador.*;
 
 /*
-actualización 0209 Juan Miguel Sandoval Chile ESTA ES LA ************************
+
 */
 public class clsExistencias {
     private int bodcodigo; //iper_id;

@@ -129,6 +129,7 @@ public class frmMantenimientoMovimientos extends javax.swing.JInternalFrame {
         label18 = new javax.swing.JLabel();
         label19 = new javax.swing.JLabel();
         label5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -370,6 +371,9 @@ public class frmMantenimientoMovimientos extends javax.swing.JInternalFrame {
         label5.setText("Registros");
         getContentPane().add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
 
+        jButton1.setText("jButton1");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 330, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -526,6 +530,7 @@ public class frmMantenimientoMovimientos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiar1;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

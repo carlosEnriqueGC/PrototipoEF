@@ -108,6 +108,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtUsuario">
       <Properties>
+        <Property name="text" type="java.lang.String" value="admin"/>
         <Property name="name" type="java.lang.String" value="txtUsuario" noResource="true"/>
       </Properties>
       <Events>
@@ -131,18 +132,18 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtContrase&#xf1;a">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="admin"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbxAreas">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="7">
+          <StringArray count="4">
             <StringItem index="0" value="Seleccione:"/>
             <StringItem index="1" value="Area Seguridad"/>
             <StringItem index="2" value="Area Logistica"/>
-            <StringItem index="3" value="Area Compras"/>
-            <StringItem index="4" value="Area Ventas"/>
-            <StringItem index="5" value="Area RRHH"/>
-            <StringItem index="6" value="Prototipo"/>
+            <StringItem index="3" value=" "/>
           </StringArray>
         </Property>
       </Properties>

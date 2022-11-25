@@ -20,11 +20,11 @@ import java.util.List;
  */
 public class daoConcepto {
 
-    private static final String SQL_SELECT = "SELECT conid, connombre, conestatus FROM tbl_conceptos";
-    private static final String SQL_INSERT = "INSERT INTO tbl_conceptos(connombre, conestatus) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_conceptos SET connombre=?, conestatus=? WHERE conid = ?";
+    private static final String SQL_SELECT = "SELECT conid, connombre, conestatus, convalor FROM tbl_conceptos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_conceptos(connombre, conestatus, convalor) VALUES(?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_conceptos SET connombre=?, conestatus=?, convalor=? WHERE conid = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_conceptos WHERE conid=?";
-    private static final String SQL_QUERY = "SELECT conid, connombre, conestatus FROM tbl_conceptos WHERE conid = ?";
+    private static final String SQL_QUERY = "SELECT conid, connombre, conestatus, convalor FROM tbl_conceptos WHERE conid = ?";
 
     public List<clsConcepto> select() {
         Connection conn = null;
@@ -41,11 +41,13 @@ public class daoConcepto {
                 int codigo = rs.getInt("conid");
                 String nombre = rs.getString("connombre");
                 String estado = rs.getString("conestatus");
+                int valor = rs.getInt("convalor");
                 
                 concepto = new clsConcepto();
                 concepto.setcodigoc(codigo);
                 concepto.setNombrec(nombre);
                 concepto.setestadoc(estado);
+                concepto.setvalorc(valor);
                 
                 conceptos.add(concepto);
             }
@@ -70,7 +72,7 @@ public class daoConcepto {
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setString(1, concepto.getNombrec());
             stmt.setString(2, concepto.getestadoc());
-
+            stmt.setInt(3, concepto.getvalorc());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -96,7 +98,8 @@ public class daoConcepto {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setString(1, concepto.getNombrec());
             stmt.setString(2, concepto.getestadoc());
-            stmt.setInt(3, concepto.getcodigoc());
+            stmt.setInt(3, concepto.getvalorc());
+            stmt.setInt(4, concepto.getcodigoc());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -151,11 +154,13 @@ public class daoConcepto {
                 int codigo = rs.getInt("conid");
                 String nombre = rs.getString("connombre");
                 String estado = rs.getString("conestatus");
+                int valor = rs.getInt("convalor");
                 
                 concepto = new clsConcepto();
                 concepto.setcodigoc(codigo);
                 concepto.setNombrec(nombre);
                 concepto.setestadoc(estado);
+                concepto.setvalorc(valor);
                 
                 //vendedores.add(vendedor); // Si se utiliza un ArrayList
             }

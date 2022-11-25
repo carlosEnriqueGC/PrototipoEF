@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class daoExistencias {
 
-    private static final String SQL_SELECT = "SELECT tbl_existencias.bodcodigo, tbl_existencias.prodcodigo, exisaldo, tbl_bodegas.bodnombre, tbl_productos.prodnombre FROM tbl_existencias INNER JOIN tbl_bodegas  ON tbl_existencias.bodcodigo = tbl_bodegas.bodcodigo INNER JOIN tbl_productos  ON tbl_existencias.prodcodigo = tbl_productos.prodcodigo";
-    private static final String SQL_INSERT = "INSERT INTO tbl_existencias(bodcodigo, prodcodigo, exisaldo) VALUES(?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_existencias SET bodcodigo=? prodcodigo=?, exisaldo=? WHERE bodcodigo = ? and ";
-    private static final String SQL_DELETE = "DELETE FROM tbl_existencias WHERE bodcodigo=?";
-    private static final String SQL_QUERY  = "SELECT tbl_existencias.bodcodigo, tbl_existencias.prodcodigo, exisaldo, tbl_bodegas.bodnombre, tbl_productos.prodnombre FROM tbl_existencias INNER JOIN tbl_bodegas  ON tbl_existencias.bodcodigo = tbl_bodegas.bodcodigo INNER JOIN tbl_productos  ON tbl_existencias.prodcodigo = tbl_productos.prodcodigo WHERE tbl_existencias.bodcodigo = ?";
+    private static final String SQL_SELECT = "SELECT tbL_existencias.bodcodigo, tbL_existencias.prodcodigo, exisaldo, tbl_bodegas.bodnombre, tbl_productos.prodnombre FROM tbL_existencias INNER JOIN tbl_bodegas  ON tbL_existencias.bodcodigo = tbl_bodegas.bodcodigo INNER JOIN tbl_productos  ON tbL_existencias.prodcodigo = tbl_productos.prodcodigo";
+    private static final String SQL_INSERT = "INSERT INTO tbL_existencias(bodcodigo, prodcodigo, exisaldo) VALUES(?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbL_existencias SET bodcodigo=? prodcodigo=?, exisaldo=? WHERE bodcodigo = ? and ";
+    private static final String SQL_DELETE = "DELETE FROM tbL_existencias WHERE bodcodigo=?";
+    private static final String SQL_QUERY  = "SELECT tbL_existencias.bodcodigo, tbL_existencias.prodcodigo, exisaldo, tbl_bodegas.bodnombre, tbl_productos.prodnombre FROM tbL_existencias INNER JOIN tbl_bodegas  ON tbL_existencias.bodcodigo = tbl_bodegas.bodcodigo INNER JOIN tbl_productos  ON tbL_existencias.prodcodigo = tbl_productos.prodcodigo WHERE tbl_existencias.bodcodigo = ?";
 
     public List<clsExistencias> select() {
         Connection conn = null;

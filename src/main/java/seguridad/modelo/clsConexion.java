@@ -5,7 +5,7 @@ import java.sql.*;
 public class clsConexion {
 
 
-  private static final String JDBC_URL = "jdbc:mysql://192.168.0.25/proyectobd122022?useSSL=false&serverTimezone=UTC";  
+  private static final String JDBC_URL = "jdbc:mysql://192.168.0.25/inventario?useSSL=false&serverTimezone=UTC";  
 
     private static final String JDBC_USER = "remoto";
     private static final String JDBC_PASS = "database_password";

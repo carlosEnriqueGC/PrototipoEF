@@ -12,7 +12,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import seguridad.controlador.clsUsuarioConectado;
-import seguridad.modelo.daoBitacora;
+
 
 
 /**
@@ -41,7 +41,7 @@ int codigoAplicacion=1;
         modelo.addColumn("Correo");
         modelo.addColumn("telefono");
         modelo.addColumn("direccion");
-        modelo.addColumn("Tipo");
+
         daoUsuario usuarioDAO = new daoUsuario();
         List<clsUsuario> usuarios = usuarioDAO.select();
         tablaVendedores.setModel(modelo);
@@ -55,7 +55,7 @@ int codigoAplicacion=1;
             dato[5] = usuarios.get(i).getUsucorreoe();
             dato[6] = usuarios.get(i).getUsutelefono();
             dato[7] = usuarios.get(i).getUsudireccion();
-            dato[8] = usuarios.get(i).getUsutipo();
+
             //System.out.println("vendedor:" + vendedores);
             modelo.addRow(dato);
         }
@@ -73,9 +73,8 @@ int codigoAplicacion=1;
         txtCorreoE.setText(usuarioAConsultar.getUsucorreoe());
         txtTelefono.setText(usuarioAConsultar.getUsutelefono());
         txtDireccion.setText(usuarioAConsultar.getUsudireccion());
-        txtTipo.setText(usuarioAConsultar.getUsutipo());
-        daoBitacora bitacora = new  daoBitacora();
-        bitacora.insert(clsUsuarioConectado.getUsuid(), codigoAplicacion, "Select");
+
+     
     }
 
     public frmMantenimientoUsuarios() {
@@ -121,8 +120,6 @@ int codigoAplicacion=1;
         label10 = new javax.swing.JLabel();
         label11 = new javax.swing.JLabel();
         lblUsuarioRegistrado = new javax.swing.JLabel();
-        lbltipo = new javax.swing.JLabel();
-        txtTipo = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JPasswordField();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
@@ -252,13 +249,6 @@ int codigoAplicacion=1;
         label11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label11.setText("Direccion");
 
-        lbltipo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        lbltipo.setText("Tipo");
-
-        txtTipo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtTipo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtTipo.setOpaque(false);
-
         txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtContrasena.addActionListener(new java.awt.event.ActionListener() {
@@ -312,10 +302,6 @@ int codigoAplicacion=1;
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCorreoE, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lbltipo)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -380,11 +366,7 @@ int codigoAplicacion=1;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label11)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbltipo)
-                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
                             .addComponent(btnEliminar)
@@ -396,7 +378,7 @@ int codigoAplicacion=1;
                             .addComponent(btnModificar))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -408,8 +390,7 @@ int codigoAplicacion=1;
         clsUsuario usuarioAEliminar = new clsUsuario();
         usuarioAEliminar.setUsuid(Integer.parseInt(txtbuscado.getText()));
         usuarioDAO.delete(usuarioAEliminar);
-        daoBitacora bitacora = new  daoBitacora();
-        bitacora.insert(clsUsuarioConectado.getUsuid(), codigoAplicacion, "Delete");
+        
         llenadoDeTablas();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -424,10 +405,9 @@ int codigoAplicacion=1;
         usuarioAInsertar.setUsucorreoe(txtCorreoE.getText());
         usuarioAInsertar.setUsutelefono(txtTelefono.getText());
         usuarioAInsertar.setUsudireccion(txtDireccion.getText());
-        usuarioAInsertar.setUsutipo(txtTipo.getText());
+
         usuarioDAO.insert(usuarioAInsertar);
-        daoBitacora bitacora = new  daoBitacora();
-        bitacora.insert(clsUsuarioConectado.getUsuid(), codigoAplicacion, "Insert");
+       
         llenadoDeTablas();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -449,10 +429,9 @@ int codigoAplicacion=1;
         usuarioAActualizar.setUsucorreoe(txtCorreoE.getText());
         usuarioAActualizar.setUsutelefono(txtTelefono.getText());        
         usuarioAActualizar.setUsudireccion(txtDireccion.getText());
-        usuarioAActualizar.setUsutipo(txtTipo.getText());
+
         usuarioDAO.update(usuarioAActualizar);
-        daoBitacora bitacora = new  daoBitacora();
-        bitacora.insert(clsUsuarioConectado.getUsuid(), codigoAplicacion, "Update");
+        
         llenadoDeTablas();
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -464,7 +443,7 @@ int codigoAplicacion=1;
         txtCorreoE.setText("");
         txtTelefono.setText("");
         txtDireccion.setText("");
-        txtTipo.setText("");
+
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(true);
@@ -518,7 +497,6 @@ int codigoAplicacion=1;
     private javax.swing.JLabel lb;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lblUsuarioRegistrado;
-    private javax.swing.JLabel lbltipo;
     private javax.swing.JLabel lbusu;
     private javax.swing.JTable tablaVendedores;
     private javax.swing.JPasswordField txtContrasena;
@@ -528,7 +506,6 @@ int codigoAplicacion=1;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreReal;
     private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtTipo;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }

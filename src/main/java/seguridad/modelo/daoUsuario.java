@@ -240,4 +240,8 @@ public clsUsuario queryn(clsUsuario usuario) {
         return usuario;
     }
 
+
+
+
+
 }

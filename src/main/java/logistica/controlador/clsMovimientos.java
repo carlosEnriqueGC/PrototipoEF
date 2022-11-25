@@ -16,7 +16,6 @@ public class clsMovimientos {
     private String movestado;
     private int prodcodigo;
     private String prodnombre;
-    private float prodexistencia;
     private int movcantidad;   
     private int lincodigo;
     private String linnombre;
@@ -24,10 +23,8 @@ public class clsMovimientos {
     private String marnombre;
     private int conid;
     private String connombre;
-    private int clicodigo;
-    private String clinombre;
-    private int procodigo;
-    private String pronombre;
+    private int movtotal;
+
  
 
 
@@ -74,12 +71,7 @@ public class clsMovimientos {
         this.prodnombre = pnombre;
     }
     
-      public Float getProdexistencia() {
-        return prodexistencia;
-    }
-    public void setProdexistencia(float pexistencia) {
-        this.prodexistencia = pexistencia;
-    }
+    
        public int getMovcantidad() {
         return movcantidad;
     }
@@ -124,29 +116,13 @@ public class clsMovimientos {
     public void setConnombre(String cnombre) {
         this.connombre = cnombre;
     }
-      public int getClicodigo() {
-        return clicodigo;
+     
+       public int getmovtotal() {
+        return movtotal;
     }
-    public void setClicodigo(int ccodigo) {
-        this.clicodigo = ccodigo;
+    public void setmovtotal(int total) {
+        this.movtotal = total;
     }
-      public String getClinombre() {
-        return clinombre;
-    }
-    public void setClinombre(String cnombre) {
-        this.clinombre = cnombre;
-    }
-        public int getProcodigo() {
-        return procodigo;
-    }
-    public void setProcodigo(int pcodigo) {
-        this.procodigo = pcodigo;
-    }
-      public String getPronombre() {
-        return pronombre;
-    }
-    public void setPronombre(String pnombre) {
-        this.pronombre = pnombre;
-    }
+    
     
     }
